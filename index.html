@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practice</title>
 </head>
-
 <body>
     <h1>Прогноз погоды по API</h1>
     <div class="block-weather">
@@ -19,6 +18,10 @@
             <div class="icon"></div>
             <a href="https://www.gismeteo.by/weather-mogilev-4251/" target="_blank">gismeteo</a>
         </div>
+        <form class="form1">
+            <p><input id="sear" type="search" placeholder="Погода по городу" width="auto">
+                <input id="btn" type="submit" value="Найти" width="auto" onclick="getWeatherByLocation()"></p>
+        </form>
     </div>
     <script src="script.js"></script>
 </body>
