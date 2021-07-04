@@ -18,10 +18,12 @@
             <div class="icon"></div>
             <a href="https://www.gismeteo.by/weather-mogilev-4251/" target="_blank">gismeteo</a>
         </div>
-        <form class="form1">
-            <p><input id="sear" type="search" placeholder="Погода по городу" width="auto">
-                <input id="btn" type="submit" value="Найти" width="auto" onclick="getWeatherByLocation()"></p>
+        <form class="form1" id="form1">
+            <p><input id="search" type="search" placeholder="Погода по городу" width="auto">
+                <input id="btn" type="submit" value="Найти" width="auto"></p>
         </form>
+        <div class="showforecast">
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
