@@ -1,6 +1,8 @@
 const form1 = document.getElementById("form1");
 const search = document.getElementById("search");
 const defaultCity = 'Mogilev';
+const currDate = new Date();
+console.log(currDate);
 
 const weatherAPIKEY = '&appid=1cfada82e70e7faaaa7e751061a54e46';
 const weatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather';
@@ -33,40 +35,36 @@ form1.addEventListener("submit", (e) => {
         .then(function(resp) { return resp.json() })
         .then(function(respData) {
             console.log(respData);
+            const il = document.createElement
+            ("ul");
+            il.classList.add('il');
+            document.querySelector('.showforecast').appendChild(il);
             respData.list.forEach((element) => {
-                const {main:{temp}, weather:{0: {description, icon}}} = element;
-                const forecastEl = document.createElement
-                ("div");
-                forecastEl.classList.add("weatherDaily");
-                forecastEl.innerHTML = `
-                    <img
-                        src="https://openweathermap.org/img/wn/${icon}@2x.png"
-                    />
-                    <div class="weather-info">
-                        <h3>${temp}</h3>
-                        <span>${description}</span>
-                `;
+                const {main:{temp}, weather:{0: {description, icon}}, dt_txt} = element;
+                const dateAPI = new Date(dt_txt);
+                if(dateAPI.getHours() == 15){
+                    const dayArray = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
-                document.querySelector('.showforecast').appendChild(forecastEl);
+                    const forecastEl = document.createElement
+                    ("li");
+                    forecastEl.classList.add("weatherDaily");
+                    forecastEl.innerHTML = `
+                            <span>${dayArray[dateAPI.getDay()]}</span>
+                            <img
+                                src="https://openweathermap.org/img/wn/${icon}@2x.png"
+                            >
+                            <div class="weather-info">
+                                <h3>${Math.round(temp)}</h3>
+                                <span>${description}</span>
+                            </div>
+                    `;
+    
+                    document.querySelector('.il').appendChild(forecastEl);
+                }
             });
-            /*for (var i = 0; i < 33;) {
-                console.log(respData.list[i].main.temp);
-                console.log(respData.list[i].weather[0]['description']);
-                console.log(respData.list[i].weather[0]['icon']);
-                i+=8;
-            }
-            for (var i = 5; i < 38;) {
-                console.log(respData.list[i]);
-                i+=8;
-            }
-            /*const forecastEl = document.createElement
-            ("div");
-            forecastEl.classList.add("weatherDaily");
-
-            forecastEl.innerHTML = `
-
-            `;*/
         })
+        .catch(function(){
+        });
     if (searchTerm) {
         search.value = "";
     }

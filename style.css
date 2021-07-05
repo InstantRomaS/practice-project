@@ -12,6 +12,7 @@
     border-radius: 20px;
     border: 2px;
     background-color: #CED1D6;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
     animation-name: wheather;
     animation-duration: 2s;
@@ -46,7 +47,6 @@
 	text-decoration: none;/* убираем декорирование */
     color: white;
     background-color: #848C9B;
-
     animation-name: transparency;
     animation-duration: 2s;
 }
@@ -75,6 +75,9 @@ body {
     border-radius: 10px;
     text-align: start;
     background-color: transparent;
+    
+    animation-name: transparency;
+    animation-duration: 2s;
 }
 #search::placeholder {
     color:black;
@@ -82,19 +85,33 @@ body {
 #search:focus {
     background-color: #92b0e9;
 }
-.showforacast{
-    width: 500px;
+.showforacast {
+    width: 1080px;
     display: flex;
-    flex-direction: row;
 }
 .weatherDaily {
-    width: min-content;
-    height: min-content;
     display: flex;
     flex-direction: column;
+    width: 100px;
+    text-decoration: none;/* убираем декорирование */
+    list-style-type: none;
+    height: 200px;
+    border-radius: 20px;
+    padding: 10px 10px;/* отступы от текста до краев */
     margin: 10px;
     background-color: #92b0e9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
     animation-name: transparency;
     animation-duration: 1s;
+}
+.weatherDaily h3 {
+    margin: 10px;
+}
+.il {
+    width: inherit;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
