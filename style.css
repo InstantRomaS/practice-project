@@ -1,14 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
 *{
+    margin: 0;
+    padding: 0;
     font-size: 1.1rem;
     text-align: center;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: flex-start;
+}
+.navbar{
+    background: linear-gradient(90deg, rgb(49, 48, 48), rgb(218, 203, 203));
+}
+.navbar ul{
+    align-content: flex-start;
+}
+.navbar li{
+    display: inline;
+    list-style-type: none;
+    width: 100px;
 }
 .weather-mogilev, .form1 {
     width: 200px;
     display: flex;
     flex-direction: column;
-    align-content: center;
-    justify-content: flex-start;
+    margin-top: 10px;
     border-radius: 20px;
     border: 2px;
     background-color: #CED1D6;
@@ -72,6 +91,8 @@ body {
     min-width: min-content;
 }
 #search {
+    padding: 5px;
+    margin-top: 20px;
     border-radius: 10px;
     text-align: start;
     background-color: transparent;
@@ -97,13 +118,17 @@ body {
     list-style-type: none;
     height: 200px;
     border-radius: 20px;
-    padding: 10px 10px;/* отступы от текста до краев */
+    padding: 10px 10px;
     margin: 10px;
     background-color: #92b0e9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: 1s;
 
     animation-name: transparency;
     animation-duration: 1s;
+}
+.weatherDaily:hover {
+    transform: scale(1.1);
 }
 .weatherDaily h3 {
     margin: 10px;
