@@ -5,6 +5,22 @@
     font-size: 1.1rem;
     text-align: center;
 }
+
+@keyframes transparency {
+    0%{opacity: 0;}
+    50%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+@keyframes wheather {
+    0%{height: 0%; background-color: #98877B;}
+    100%{height: 100%; background-color: #CED1D6;}
+}
+@keyframes shadow {
+    0%{box-shadow: none;}
+    100%{box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);}
+}
+
 .header {
     display: flex;
     width: 100%;
@@ -134,6 +150,7 @@
     font-family: 'Castoro', serif;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 20px;
 }
 
 .city-name {
@@ -161,17 +178,6 @@
     background-color: #848C9B;
     animation-name: transparency;
     animation-duration: 2s;
-}
-
-@keyframes transparency {
-    0%{opacity: 0;}
-    50%{opacity: 0;}
-    100%{opacity: 1;}
-}
-
-@keyframes wheather {
-    0%{height: 0%; background-color: #98877B;}
-    100%{height: 100%; background-color: #CED1D6;}
 }
 
 body {
@@ -207,31 +213,19 @@ body {
     background-color: #92b0e9;
 }
 
-.showforacast {
-    width: 1080px;
-    display: flex;
+.showforecast {
+    overflow: hidden;
+    width: 390px;
+    margin: 0 auto;
 }
 
 .weatherDaily {
-    display: flex;
-    flex-direction: column;
-    width: 100px;
+    width: 130px;
     text-decoration: none;/* убираем декорирование */
     list-style-type: none;
-    height: 200px;
-    border-radius: 20px;
-    padding: 10px 10px;
-    margin: 10px;
+    height: 220px; 
+    transition: .2s;
     background-color: #92b0e9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: 1s;
-
-    animation-name: transparency;
-    animation-duration: 1s;
-}
-
-.weatherDaily:hover {
-    transform: scale(1.1);
 }
 
 .weatherDaily h3 {
@@ -239,12 +233,44 @@ body {
 }
 
 .il {
-    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-}
+    margin: 0 auto;
+    max-width: inherit;
 
+    animation-name: transparency;
+    animation-duration: 1s;
+
+    transition: .2s;
+}
+.btn_next, .btn_prev {
+    margin-top: 5px;
+    padding: 10px 10px;/* отступы от текста до краев */
+    border-radius: 20px;
+	text-decoration: none;/* убираем декорирование */
+    color: white;
+    background-color: #848C9B;
+    height: max-content;
+
+    animation-name: transparency;
+    animation-duration: 1s;
+}
+.btn_next:hover, .btn_prev:hover {
+    cursor: pointer;
+    background-color: #92b0e9;
+}
+.btn_next:disabled, .btn_prev:disabled {
+    cursor: pointer;
+    background-color: #dae7fd;
+}  
+.slider-container{
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+
+    animation-name: shadow;
+    animation-duration: 1s;
+}
 .search-err {
     border-color: red;
 }
