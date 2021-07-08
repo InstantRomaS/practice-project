@@ -1,24 +1,48 @@
-const defaultCity = 'Mogilev';
-const weatherApiUtl = 'http://api.openweathermap.org/data/2.5/weather';
+import { weatherAPIKEY, weatherApiUrl, insertIcon, weathersearchAPIUrl, form1, search, defaultCity, forecast, cityNameElement, temperatureEl, windEl, iconEl} from './consts.js';
 
-const cityNameElement = document.querySelector('.city-name');
+import {createForecastSection} from './utils.js'
 
-const insertIcon = (iconCipher) => `<img src="https://openweathermap.org/img/wn/${iconCipher}@2x.png">`;
-
-fetch(`${weatherApiUtl}?q=${defaultCity}&lang=ru&units=metric&appid=1cfada82e70e7faaaa7e751061a54e46`)
-    .then(function(resp){ return resp.json() })
-    .then(function(data) {
+fetch(`${weatherApiUrl}?q=${defaultCity}&lang=ru&units=metric${weatherAPIKEY}`)
+    .then((resp) => resp.json())
+    .then((data) => {
         console.log(data);
         cityNameElement.innerHTML = data.name;
-        document.querySelector('.temperature').innerHTML=Math.round(data.main.temp) + '&degC';
-        document.querySelector('.wind').innerHTML=data.weather[0].description;
-        document.querySelector('.icon').innerHTML = insertIcon(data.weather[0]['icon']);
+        temperatureEl.innerHTML = Math.round(data.main.temp) + '&degC';
+        windEl.innerHTML = data.weather[0].description;
+        iconEl.innerHTML = insertIcon(data.weather[0]['icon']);
     })
-    .catch(function(){
+    .catch((err) => {
+        console.log(err);
     });
-/*async function getWeatherByLocation(){
-    let city=document.getElementById("sear").nodeValue;
-    let URL=`http://api.openweathermap.org/data/2.5/weather?q=${city}&lang=ru&units=metric&appid=1cfada82e70e7faaaa7e751061a54e46`;
-    const resp = await fetch(URL,
-    const respData = await resp.json();
-}*/
+
+form1.addEventListener("submit", (e) => {
+    forecast.innerHTML = "";
+    e.preventDefault();
+    let searchCity = search.value;
+    if (!searchCity) return;
+    if (searchCity) {
+        if(searchCity.match(/[0-9]/)) {
+            search.classList.add('search-err');
+            return;
+        } else {
+            if (search.classList.contains('search-err')) {
+                search.classList.remove('search-err');
+            }
+        }
+            
+    }
+
+    fetch(`${weathersearchAPIUrl}?q=${searchCity}&lang=ru&units=metric&day=5${weatherAPIKEY}`)
+        .then((resp) => resp.json())
+        .then((respData) => {
+            console.log(respData);
+            createForecastSection(respData);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+
+    if (searchCity) {
+        search.value = "";
+    }
+});
