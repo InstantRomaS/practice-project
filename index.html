@@ -3,6 +3,8 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +39,16 @@
     </div>
     <div class="showforecast"> 
     </div>
+    <div class="searchMap">
+        <input id="search" type="search" width="100px" placeholder="Веедите город">
+        <input id="btn" type="button" width="100px" value="Найти">
+        <div id="map">
+        </div>
+    </div>
+    <script type="module" src="map.js"></script>
     <script type="module" src="script.js"></script>
+    <script type="module" src="map.js"></script>
+</body>
 </body>
 
 </html>

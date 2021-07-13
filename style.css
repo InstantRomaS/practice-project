@@ -319,3 +319,19 @@ body {
     body {background: linear-gradient(90deg, rgb(106, 106, 243),red, rgb(255, 136, 249));}
 
 }
+
+#map {
+    display: flex;
+    width: 700px;
+    height: 500px;
+    margin: 10px auto;
+}
+
+.searchMap {
+    display: flex;
+    align-items: flex-start;
+}
+
+.searchMap #btn {
+    margin: 15px 0px 0px 5px
+}
