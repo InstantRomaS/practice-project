@@ -4,7 +4,7 @@ export const weatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather';
 export const weathersearchAPIUrl = 'http://api.openweathermap.org/data/2.5/forecast'; 
 export const insertIcon = (iconCipher) => `<img src="https://openweathermap.org/img/wn/${iconCipher}@2x.png">`;
 
-export const form1 = document.getElementById("form1");
+export const forecastSlider = document.getElementById("forecastSlider");
 export const search = document.getElementById("search");
 export const defaultCity = 'Mogilev';
 export const forecast = document.querySelector('.showforecast');

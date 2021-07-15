@@ -1,9 +1,9 @@
 import { DAY_ARRAY, insertIcon, } from './consts.js';
 
 export const createForecastSection = (respData) => {
-    const slider_container = document.createElement("div");
-    slider_container.classList.add('slider-container');
-    document.querySelector('.showforecast').appendChild(slider_container);
+    const sliderContainer = document.createElement("div");
+    sliderContainer.classList.add('slider-container');
+    document.querySelector('.showforecast').appendChild(sliderContainer);
     const il = document.createElement("ul");
     il.classList.add('il');
     document.querySelector('.slider-container').appendChild(il);
