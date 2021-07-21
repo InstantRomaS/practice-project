@@ -1,16 +1,17 @@
 import { weatherAPIKEY, weatherApiUrl, insertIcon, weathersearchAPIUrl, forecastSlider, search, defaultCity, forecast, cityNameElement, temperatureEl, windEl, iconEl } from './consts.js';
 
-import { createForecastSection } from './utils.js';
+import { createForecastSection, showTime } from './utils.js';
 
 import { BuildMap } from './map.js';
 
+showTime();
 
 fetch(`${weatherApiUrl}?q=${defaultCity}&lang=ru&units=metric${weatherAPIKEY}`)
     .then((resp) => resp.json())
     .then((data) => {
         console.log(data);
         cityNameElement.innerHTML = data.name;
-        temperatureEl.innerHTML = Math.round(data.main.temp) + '&degC';
+        temperatureEl.innerHTML = `${Math.round(data.main.temp)} <sup>&degC</sup>`;
         windEl.innerHTML = data.weather[0].description;
         iconEl.innerHTML = insertIcon(data.weather[0]['icon']);
     })
@@ -93,3 +94,4 @@ forecastSlider.addEventListener("submit", (e) => {
         search.value = "";
     }
 });
+

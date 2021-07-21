@@ -12,3 +12,4 @@ export const cityNameElement = document.querySelector('.city-name');
 export const temperatureEl = document.querySelector('.temperature');
 export const windEl = document.querySelector('.wind');
 export const iconEl = document.querySelector('.icon');
+export const time = document.querySelector('.currtime');
