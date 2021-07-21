@@ -1,4 +1,4 @@
-import { DAY_ARRAY, insertIcon, } from './consts.js';
+import { DAY_ARRAY, insertIcon, time} from './consts.js';
 
 export const createForecastSection = (respData) => {
     const sliderContainer = document.createElement("div");
@@ -37,4 +37,11 @@ function scrollBtns() {
             <button class="btn_next">След</button>
     `;
     document.querySelector('.showforecast').appendChild(slider_buttons);
+}
+
+export function showTime() {
+    const data = new Date();
+    const options = {month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timezone: 'UTC'};
+    time.textContent = data.toLocaleDateString('ru-RU', options);
+    setTimeout(showTime, 1000);
 }
